@@ -120,7 +120,9 @@ app.put('videos/:id', (req: Request, res: Response) => {
 
 })
 
-
+app.get('/', (req: Request, res: Response) => {
+		res.send('Hello world')
+})
 app.listen(port, () => {
 		console.log(`Example app listening on port ${port}`)
 })
