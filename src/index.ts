@@ -60,26 +60,26 @@ app.get('/videos/:id', (req: Request, res: Response) => {
 		}
 })
 app.post('/videos', (req: Request, res: Response) => {
-		// const validation = {
-		// 		errorsMessages: [
-		// 				{
-		// 						message: null as string | null,
-		// 						field: null as string | null,
-		// 				}
-		// 		]
-		// }
-		// if (req.body.author.length > 20) {
-		// 		validation.errorsMessages[0].message = 'author length must me less than 20 symbols'
-		// 		validation.errorsMessages[0].field = 'author'
-		// 		res.status(400).json(validation)
-		// 		return
-		// }
-		// if (req.body.title.length > 40) {
-		// 		validation.errorsMessages[0].message = 'title length must me less than 40 symbols'
-		// 		validation.errorsMessages[0].field = 'title'
-		// 		res.status(400).json(validation)
-		// 		return
-		// }
+		const validation = {
+				errorsMessages: [
+						{
+								message: null as string | null,
+								field: null as string | null,
+						}
+				]
+		}
+		if (req.body.author.length > 20) {
+				validation.errorsMessages[0].message = 'author length must me less than 20 symbols'
+				validation.errorsMessages[0].field = 'author'
+				res.status(400).json(validation)
+				return
+		}
+		if (req.body.title.length > 40) {
+				validation.errorsMessages[0].message = 'title length must me less than 40 symbols'
+				validation.errorsMessages[0].field = 'title'
+				res.status(400).json(validation)
+				return
+		}
 
 
 		const createdVideo: Video = {
