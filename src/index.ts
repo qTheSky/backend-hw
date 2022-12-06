@@ -134,6 +134,15 @@ app.put('videos/:id', (req: Request, res: Response) => {
 		}
 
 })
+app.delete('/videos/:id', (req: Request, res: Response) => {
+		const foundVideo = videos.find(v => v.id === +req.params.id)
+		if (foundVideo) {
+				videos = videos.filter(v => v.id !== +req.params.id)
+				res.sendStatus(204)
+		} else {
+				res.sendStatus(404)
+		}
+})
 
 app.get('/', (req: Request, res: Response) => {
 		res.send('Hello world')
