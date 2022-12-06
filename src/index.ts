@@ -68,6 +68,17 @@ app.post('/videos', (req: Request, res: Response) => {
 						}
 				]
 		}
+		if (!req.body.title.trim().length) {
+				validation.errorsMessages[0].message = 'title should be in body'
+				validation.errorsMessages[0].field = 'title'
+				res.status(400).json(validation)
+		}
+		if (!req.body.author.trim().length) {
+				validation.errorsMessages[0].message = 'author should be in body'
+				validation.errorsMessages[0].field = 'author'
+				res.status(400).json(validation)
+		}
+
 		if (req.body.author.length > 20) {
 				validation.errorsMessages[0].message = 'author length must me less than 20 symbols'
 				validation.errorsMessages[0].field = 'author'
