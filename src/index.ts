@@ -49,7 +49,7 @@ app.delete('/testing/all-data', (req: Request, res: Response) => {
 })
 
 app.get('/videos', (req: Request, res: Response) => {
-		res.json(videos)
+		res.status(200).json(videos)
 })
 app.get('/videos/:id', (req: Request, res: Response) => {
 		const foundVideo = videos.find(v => v.id === +req.params.id)
