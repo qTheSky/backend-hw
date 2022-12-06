@@ -105,7 +105,7 @@ app.put('videos/:id', (req: Request, res: Response) => {
 				]
 		}
 		if (req.body.title.length > 40) {
-				validation.errorsMessages[0].message = 'author length must me less than 20 symbols'
+				validation.errorsMessages[0].message = 'title length must me less than 40 symbols'
 				validation.errorsMessages[0].field = 'title'
 				res.status(400).json(validation)
 				return
@@ -115,9 +115,6 @@ app.put('videos/:id', (req: Request, res: Response) => {
 				foundVideo.title = req.body.title
 				foundVideo.author = req.body.author
 				foundVideo.availableResolutions = req.body.availableResolutions
-				foundVideo.canBeDownloaded = req.body.canBeDownloaded
-				foundVideo.minAgeRestriction = req.body.minAgeRestriction
-				foundVideo.publicationDate = req.body.publicationDate
 				res.sendStatus(204)
 		} else {
 				res.sendStatus(404)
