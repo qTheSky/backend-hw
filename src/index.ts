@@ -39,12 +39,12 @@ app.delete('/testing/all-data', (req: Request, res: Response) => {
 })
 
 app.get('/videos', (req: Request, res: Response) => {
-		res.status(200).json(videos)
+		res.status(200).send(videos)
 })
 app.get('/videos/:id', (req: Request, res: Response) => {
 		const foundVideo = videos.find(v => v.id === +req.params.id)
 		if (foundVideo) {
-				res.status(200).json(foundVideo)
+				res.status(200).send(foundVideo)
 		} else {
 				res.sendStatus(404)
 		}
