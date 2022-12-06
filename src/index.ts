@@ -28,7 +28,7 @@ interface Video {
 		availableResolutions: null | string[]
 }
 
-const videos: Video[] = [
+let videos: Video[] = [
 		{
 				id: 0,
 				title: 'string',
@@ -42,6 +42,11 @@ const videos: Video[] = [
 				]
 		}
 ]
+
+app.delete('/testing/all-data', (req: Request, res: Response) => {
+		videos = []
+		res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
+})
 
 app.get('/videos', (req: Request, res: Response) => {
 		res.json(videos)
