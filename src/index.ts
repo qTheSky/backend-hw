@@ -108,7 +108,8 @@ app.post('/videos', (req: Request, res: Response) => {
 		videos.push(createdVideo)
 		res.status(HTTP_STATUSES.CREATED_201).send(createdVideo)
 })
-app.put('videos/:id', (req: Request, res: Response) => {
+app.put('/videos/:id', (req: Request, res: Response) => {
+
 		const validation = {
 				errorsMessages: [
 						{
