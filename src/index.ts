@@ -93,7 +93,7 @@ app.post('/videos', (req: Request, res: Response) => {
 				minAgeRestriction: null,
 		}
 		videos.push(createdVideo)
-		res.status(HTTP_STATUSES.CREATED_201).json(createdVideo)
+		res.status(HTTP_STATUSES.CREATED_201).send(createdVideo)
 })
 app.put('videos/:id', (req: Request, res: Response) => {
 		const validation = {
