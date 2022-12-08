@@ -62,7 +62,7 @@ app.post('/videos', (req: Request, res: Response) => {
 		if (!req.body.author || req.body.author.trim().length > 20) {
 				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
-		if (!req.body.availableResolutions.some((r: string) => availableResolutions.includes(r))) {
+		if (!req.body.availableResolutions.every((r: string) => availableResolutions.includes(r))) {
 				validation.errorsMessages.push({
 						message: 'available resolutions are P144, P240, P360, P480, P720, P1080, P1440, P2160',
 						field: 'availableResolutions'
