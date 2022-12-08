@@ -73,12 +73,14 @@ app.post('/videos', (req: Request, res: Response) => {
 				return
 		}
 
+
+		const currentDate = new Date()
 		const createdVideo: Video = {
 				author: req.body.author,
 				title: req.body.title,
 				availableResolutions: req.body.availableResolutions,
-				createdAt: new Date().toISOString(),
-				publicationDate: new Date().toISOString(),
+				createdAt: currentDate.toISOString(),
+				publicationDate: currentDate.setDate(currentDate.getDate() + 1).toString(),
 				canBeDownloaded: true,
 				id: +new Date(),
 				minAgeRestriction: null,
