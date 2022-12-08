@@ -126,7 +126,9 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 				foundVideo.title = req.body.title
 				foundVideo.author = req.body.author
 				foundVideo.canBeDownloaded = req.body.canBeDownloaded || foundVideo.canBeDownloaded
-				foundVideo.availableResolutions = req.body.availableResolutions
+				foundVideo.availableResolutions = req.body.availableResolutions || foundVideo.availableResolutions
+				foundVideo.minAgeRestriction = req.body.minAgeRestriction || foundVideo.minAgeRestriction
+				foundVideo.publicationDate = req.body.publicationDate || foundVideo.publicationDate
 				res.sendStatus(204)
 		} else {
 				res.sendStatus(404)
