@@ -18,6 +18,13 @@ interface Video {
 		availableResolutions: null | string[]
 }
 
+function addDays(date: Date, days: number) {
+		const result = new Date(date)
+		result.setDate(result.getDate() + days)
+		return result
+}
+
+
 let videos: Video[] = [
 		// {
 		// 		id: 0,
@@ -70,14 +77,16 @@ app.post('/videos', (req: Request, res: Response) => {
 				title: req.body.title,
 				availableResolutions: req.body.availableResolutions,
 				createdAt: new Date().toISOString(),
-				publicationDate: new Date().toISOString(),
+				publicationDate: addDays(new Date(), 1).toISOString(),
 				canBeDownloaded: true,
 				id: +new Date(),
 				minAgeRestriction: null,
 		}
+
 		videos.push(createdVideo)
 		res.status(201).send(createdVideo)
 })
+
 app.put('/videos/:id', (req: Request, res: Response) => {
 		const validation = {
 				errorMessages: [] as Array<{ message: string, field: string }>
