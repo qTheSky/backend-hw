@@ -19,18 +19,18 @@ interface Video {
 }
 
 let videos: Video[] = [
-		{
-				id: 0,
-				title: 'string',
-				author: 'string',
-				canBeDownloaded: true,
-				minAgeRestriction: null,
-				createdAt: '2022-12-06T13:23:30.896Z',
-				publicationDate: '2022-12-06T13:23:30.896Z',
-				availableResolutions: [
-						'P144'
-				]
-		}
+		// {
+		// 		id: 0,
+		// 		title: 'string',
+		// 		author: 'string',
+		// 		canBeDownloaded: true,
+		// 		minAgeRestriction: null,
+		// 		createdAt: '2022-12-06T13:23:30.896Z',
+		// 		publicationDate: '2022-12-06T13:23:30.896Z',
+		// 		availableResolutions: [
+		// 				'P144'
+		// 		]
+		// }
 ]
 
 app.delete('/testing/all-data', (req: Request, res: Response) => {
