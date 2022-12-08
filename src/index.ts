@@ -58,16 +58,16 @@ app.get('/videos/:id', (req: Request, res: Response) => {
 })
 app.post('/videos', (req: Request, res: Response) => {
 		const validation = {
-				errorMessages: [] as Array<{ message: string, field: string }>
+				errorsMessages: [] as Array<{ message: string, field: string }>
 		}
 
 		if (!req.body.title || req.body.title.trim().length > 40) {
-				validation.errorMessages.push({message: 'title should exist and < 40 symbols', field: 'title'})
+				validation.errorsMessages.push({message: 'title should exist and < 40 symbols', field: 'title'})
 		}
 		if (!req.body.author || req.body.author.trim().length > 20) {
-				validation.errorMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
+				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
-		if (validation.errorMessages.length) {
+		if (validation.errorsMessages.length) {
 				res.status(400).send(validation)
 				return
 		}
@@ -89,19 +89,19 @@ app.post('/videos', (req: Request, res: Response) => {
 
 app.put('/videos/:id', (req: Request, res: Response) => {
 		const validation = {
-				errorMessages: [] as Array<{ message: string, field: string }>
+				errorsMessages: [] as Array<{ message: string, field: string }>
 		}
 
 		if (!req.body.title || req.body.title.trim().length > 40) {
-				validation.errorMessages.push({message: 'title should exist and < 40 symbols', field: 'title'})
+				validation.errorsMessages.push({message: 'title should exist and < 40 symbols', field: 'title'})
 		}
 		if (!req.body.author || req.body.author.trim().length > 20) {
-				validation.errorMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
+				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
 		if (typeof req.body.canBeDownloaded !== 'boolean') {
-				validation.errorMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
+				validation.errorsMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
 		}
-		if (validation.errorMessages.length) {
+		if (validation.errorsMessages.length) {
 				res.status(400).send(validation)
 				return
 		}
