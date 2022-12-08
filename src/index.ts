@@ -18,12 +18,7 @@ interface Video {
 		availableResolutions: null | string[]
 }
 
-function addDays(date: Date, days: number) {
-		const result = new Date(date)
-		result.setDate(result.getDate() + days)
-		return result
-}
-
+const availableResolutions = ['P144', 'P240', 'P360', 'P480', 'P720', 'P1080', 'P1440', 'P2160']
 
 let videos: Video[] = [
 		// {
@@ -67,6 +62,12 @@ app.post('/videos', (req: Request, res: Response) => {
 		if (!req.body.author || req.body.author.trim().length > 20) {
 				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
+		if (!req.body.availableResolutions.some((r: string) => availableResolutions.includes(r))) {
+				validation.errorsMessages.push({
+						message: 'available resolutions are P144, P240, P360, P480, P720, P1080, P1440, P2160',
+						field: 'availableResolutions'
+				})
+		}
 		if (validation.errorsMessages.length) {
 				res.status(400).send(validation)
 				return
@@ -97,6 +98,12 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 		}
 		if (!req.body.author || req.body.author.trim().length > 20) {
 				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
+		}
+		if ((typeof req.body.minAgeRestriction !== 'number' || null) || req.body.minAgeRestriction > 18 || req.body.minAgeRestriction < 1) {
+				validation.errorsMessages.push({
+						message: 'minAgeRestriction should be 1-18 or null ',
+						field: 'minAgeRestriction'
+				})
 		}
 		if (typeof req.body.canBeDownloaded !== 'boolean') {
 				validation.errorsMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
