@@ -113,10 +113,9 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 						field: 'publicationDate'
 				})
 		}
-		// if (typeof req.body.canBeDownloaded !== 'boolean') {
-		// 		validation.errorsMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
-		// }
-
+		if (typeof req.body.canBeDownloaded !== 'boolean') {
+				validation.errorsMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
+		}
 		if (validation.errorsMessages.length) {
 				res.status(400).send(validation)
 				return
