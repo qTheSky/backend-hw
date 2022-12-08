@@ -81,7 +81,7 @@ app.post('/videos', (req: Request, res: Response) => {
 				availableResolutions: req.body.availableResolutions,
 				createdAt: currentDate.toISOString(),
 				publicationDate: new Date(currentDate.setDate(currentDate.getDate() + 1)).toISOString(),
-				canBeDownloaded: true,
+				canBeDownloaded: false,
 				id: +new Date(),
 				minAgeRestriction: null,
 		}
