@@ -125,6 +125,7 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 		if (foundVideo) {
 				foundVideo.title = req.body.title
 				foundVideo.author = req.body.author
+				foundVideo.canBeDownloaded = req.body.canBeDownloaded || foundVideo.canBeDownloaded
 				foundVideo.availableResolutions = req.body.availableResolutions
 				res.sendStatus(204)
 		} else {
