@@ -99,15 +99,22 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 		if (!req.body.author || req.body.author.trim().length > 20) {
 				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
-		if ((typeof req.body.minAgeRestriction !== 'number' || null) || req.body.minAgeRestriction > 18 || req.body.minAgeRestriction < 1) {
+		if (typeof req.body.minAgeRestriction !== 'number' || req.body.minAgeRestriction > 18 || req.body.minAgeRestriction < 1) {
 				validation.errorsMessages.push({
 						message: 'minAgeRestriction should be 1-18 or null ',
 						field: 'minAgeRestriction'
 				})
 		}
+		if (typeof req.body.publicationDate !== 'string') {
+				validation.errorsMessages.push({
+						message: 'incorrect publicationDate',
+						field: 'publicationDate'
+				})
+		}
 		if (typeof req.body.canBeDownloaded !== 'boolean') {
 				validation.errorsMessages.push({message: 'canBeDownloaded should be boolean', field: 'canBeDownloaded'})
 		}
+
 		if (validation.errorsMessages.length) {
 				res.status(400).send(validation)
 				return
