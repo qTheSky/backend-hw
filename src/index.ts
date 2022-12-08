@@ -101,7 +101,7 @@ app.put('/videos/:id', (req: Request, res: Response) => {
 		if (!req.body.author || req.body.author.trim().length > 20) {
 				validation.errorsMessages.push({message: 'author should exist and < 20 symbols', field: 'author'})
 		}
-		if (req.body.minAgeRestriction > 18 || req.body.minAgeRestriction < 1) {
+		if (req.body.minAgeRestriction > 18 || (typeof req.body.minAgeRestriction === 'number' && req.body.minAgeRestriction < 1)) {
 				validation.errorsMessages.push({
 						message: 'minAgeRestriction should be 1-18 or null ',
 						field: 'minAgeRestriction'
